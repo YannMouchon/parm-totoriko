@@ -2,3 +2,5 @@ pom.xml
 *.iml
 target/
 lib/
+.idea
+a.out
