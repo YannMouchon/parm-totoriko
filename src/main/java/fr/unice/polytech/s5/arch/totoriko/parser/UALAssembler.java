@@ -1,7 +1,6 @@
 package fr.unice.polytech.s5.arch.totoriko.parser;
 
 import fr.unice.polytech.s5.arch.totoriko.UALLexer;
-import fr.unice.polytech.s5.arch.totoriko.UALListener;
 import fr.unice.polytech.s5.arch.totoriko.UALParser;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
