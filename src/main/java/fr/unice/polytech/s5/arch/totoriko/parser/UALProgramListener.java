@@ -514,7 +514,10 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
 
         int code = LookupTable.immInstructions.get("str");
 
-        code += Integer.parseInt( ctx.imm().getText().substring(1) );
+        if ( ctx.imm() != null) {
+            code += Integer.parseInt( ctx.imm().getText().substring(1) );
+        }
+
         code += Integer.parseInt(ctx.register(0).getText().charAt(1) + "") << 8;
 
         op.add(code);
