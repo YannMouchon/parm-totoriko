@@ -32,7 +32,7 @@ public class LookupTable {
         immInstructions.put("add", 0b11_1_0_000_000_000);
         immInstructions.put("sub", 0b11_1_1_000_000_000);
         immInstructions.put("mov", 0b1_00_000_00000000);
-        immInstructions.put("rsb", 0b1000_1001_000_000);
+        immInstructions.put("rsb", 0b10000_1001_000_000);
         immInstructions.put("str", 0b1001_0_000_00000000);
         immInstructions.put("ldr", 0b1001_1_000_00000000);
 
