@@ -280,11 +280,14 @@ asr
     ;
 
 add
-    : ADD register comma register comma (register | imm)
+    : ADD
+    ( (register comma)? register comma imm )
+    | register comma register comma register
     ;
-
 sub
-    : SUB register comma register comma (register | imm)
+    : SUB
+    ( (register comma)? register comma imm )
+    | register comma register comma register
     ;
 
 mov
@@ -344,7 +347,7 @@ mvn
     ;
 
 str
-    : STR register comma lbracket register comma imm rbracket
+    : STR register comma lbracket ( (register comma)? imm | register (comma imm)?) rbracket
     ;
 
 ldr
