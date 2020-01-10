@@ -95,8 +95,9 @@ public class UALLblListener implements UALListener {
         int line = ctx.getStart().getLine();
         String name = ctx.label().getText();
 
-        // Memory location starts at 0
-        labelsMemoryAddress.put(name, line - 1);
+        // Memory location starts at 1
+        // Controller adds 3 to the pointer
+        labelsMemoryAddress.put(name, line);
     }
 
     @Override
