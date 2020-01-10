@@ -221,7 +221,7 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
         }
 
         if ( sp )
-            code += Integer.parseInt( ctx.imm().getText().substring(1) ) << 6;
+            code += Integer.parseInt( ctx.imm().getText().substring(1) );
 
         op.add(code);
     }
@@ -251,7 +251,7 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
 
 
         if ( sp )
-            code += Integer.parseInt( ctx.imm().getText().substring(1) ) << 6;
+            code += Integer.parseInt( ctx.imm().getText().substring(1) );
 
         op.add(code);
     }
