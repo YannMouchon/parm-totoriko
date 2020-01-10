@@ -24,7 +24,8 @@ public class UALAssembler {
         try {
             stream = CharStreams.fromFileName(fromFileName);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("No such file: " + e.getMessage());
+            System.exit(1);
         }
 
         UALLexer lexer = new UALLexer(stream);
