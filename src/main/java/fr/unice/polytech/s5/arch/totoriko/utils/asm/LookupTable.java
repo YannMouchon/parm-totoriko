@@ -71,7 +71,7 @@ public class LookupTable {
         mixInstructions.put("lt", 0b1011);
         mixInstructions.put("gt", 0b1100);
         mixInstructions.put("le", 0b1101);
-        mixInstructions.put("al", 0b1101);
+        mixInstructions.put("al", 0b1110);
 
         IntStream.range(0, 8)
                  .forEach( i -> registers.put("r" + i, i));
