@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * UAL's PARM assembly compiler.
+ */
 public class UALC {
 
     private List<String> errors;
@@ -66,24 +68,31 @@ public class UALC {
 
         List<Integer> op = assembler.build(inputFile);
 
-        UALFileOutput writer;
+
 
         if ( cc.cmd.hasOption("b")) {
+
+            UALFileOutput<Byte> writer;
             writer = new BinaryFileOutput(outputFile);
             // TODO
+
+            writer.writeToDisk();
         }
 
         else {
+            UALFileOutput<String> writer;
             writer = new LogisimFileOutput(outputFile);
+
             List<String> opHexStr = new ArrayList<>();
 
             op.forEach( i -> opHexStr.add(Integer.toHexString(i)));
 
             writer.setData(opHexStr);
+
+            writer.writeToDisk();
         }
 
 
-        writer.writeToDisk();
     }
 
 }
