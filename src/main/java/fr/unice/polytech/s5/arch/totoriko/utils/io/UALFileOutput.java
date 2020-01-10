@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Instructions file writing abstraction.
+ *
+ * @param <T> the type of datum to write.
+ */
 public abstract class UALFileOutput<T> {
 
     protected String filename;

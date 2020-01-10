@@ -4,12 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+
+/**
+ * Utility class mimicking a Lookup Table.
+ */
 public class LookupTable {
 
+    // opcodes for instructions with an immediate.
     public static Map<String, Integer> immInstructions = new HashMap<>();
+
+    // opcodes for instructions register to register.
     public static Map<String, Integer> regInstructions = new HashMap<>();
+
+    // opcodes for hybrid instructions.
     public static Map<String, Integer> mixInstructions = new HashMap<>();
     public static Map<String, Integer> registers = new HashMap<>();
+
+
+    /**
+     * must be called before translating any instructions.
+     */
     public static void fillTables() {
 
         immInstructions.put("lsl", 0b0);

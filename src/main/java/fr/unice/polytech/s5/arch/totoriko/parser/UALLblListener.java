@@ -9,8 +9,15 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * UAL's AST tree walker which only read labels.
+ * To each label is mapped its line minus empty lines, which gives us the location of the label in the memory.
+ */
 public class UALLblListener implements UALListener {
 
+    /**
+     * Each label is given a line - empty lines.
+     */
     private Map<String, Integer> labelsMemoryAddress;
 
     public UALLblListener() {
@@ -88,6 +95,7 @@ public class UALLblListener implements UALListener {
         int line = ctx.getStart().getLine();
         String name = ctx.label().getText();
 
+        // Memory location starts at 0
         labelsMemoryAddress.put(name, line - 1);
     }
 

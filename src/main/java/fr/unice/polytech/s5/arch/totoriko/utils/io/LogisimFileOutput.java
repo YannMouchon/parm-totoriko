@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Translate every instruction to its string equivalent into a file Logisim can read.
+ */
 public class LogisimFileOutput extends UALFileOutput<String> {
 
     public LogisimFileOutput(String filename) {

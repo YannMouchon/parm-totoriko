@@ -11,9 +11,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * UAL's AST tree walker.
+ *
+ * Please refer to UAL's ANTLR grammar file and ANTLR documentation.
+ */
 public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UALListener {
 
+    /** TODO
+     * Refactor redundant code.
+     */
+
+    // List of translated operations.
     private List<Integer> op;
+
+    // To each label is mapped its current line minus empty lines minus 1.
     private Map<String, Integer> labelsMemoryAddress;
 
     public UALProgramListener() {
@@ -139,6 +151,7 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
     @Override
     public void exitLsl(UALParser.LslContext ctx) {
 
+        // lsl register, register ?
         boolean regToReg = ctx.imm() == null;
 
         int code = regToReg ? LookupTable.regInstructions.get("lsl")
@@ -161,6 +174,7 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
     @Override
     public void exitLsr(UALParser.LsrContext ctx) {
 
+        // lsr register, register ?
         boolean regToReg = ctx.imm() == null;
 
         int code = regToReg ? LookupTable.regInstructions.get("lsr")
@@ -183,6 +197,7 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
     @Override
     public void exitAsr(UALParser.AsrContext ctx) {
 
+        // asr register, register?
         boolean regToReg = ctx.imm() == null;
 
         int code = regToReg ? LookupTable.regInstructions.get("asr")
@@ -205,7 +220,9 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
     @Override
     public void exitAdd(UALParser.AddContext ctx) {
 
+        // add register, register?
         boolean regToReg = ctx.register().size() == 3;
+        // add to sp?
         boolean sp = ctx.register(0).getText().toLowerCase().equals("sp");
 
         int code = regToReg ? LookupTable.regInstructions.get("add")
@@ -233,7 +250,9 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
     @Override
     public void exitSub(UALParser.SubContext ctx) {
 
+        // sub register, register?
         boolean regToReg = ctx.register().size() == 3;
+        // sub to sp?
         boolean sp = ctx.register(0).getText().toLowerCase().equals("sp");
 
         int code = regToReg ? LookupTable.regInstructions.get("sub")
@@ -526,6 +545,8 @@ public class UALProgramListener implements fr.unice.polytech.s5.arch.totoriko.UA
     public void exitB(UALParser.BContext ctx) {
 
         int code = LookupTable.mixInstructions.get("b");
+
+        // op<c> where c is a condition flag
         int ccode = ctx.BC().getText().length() > 1 ? LookupTable.mixInstructions.get(ctx.BC().getText().substring(1).toLowerCase())
                                                     : LookupTable.mixInstructions.get("al");
 
